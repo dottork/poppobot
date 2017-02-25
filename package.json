@@ -1,0 +1,19 @@
+{
+  "name": "bot1",
+  "version": "1.0.0",
+  "description": "bot di prova",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "poppobot"
+  },
+  "author": "Luca Colciago (DottorK)",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.1",
+    "node-telegram-bot-api": "^0.27.0"
+  }
+}

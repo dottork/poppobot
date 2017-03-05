@@ -1,4 +1,4 @@
-var cool = require('cool-ascii-faces')
+var cool = require('cool-ascii-faces');
 
 var asciiHeart = require("ascii-heart");
 
@@ -8,8 +8,20 @@ const vacca=require('vaca');
 
 var token = '309693128:AAH4TGkBXegyVLykKklS9P44emEgv56K9BM';
 
-var Bot = require('node-telegram-bot-api'),
-    bot = new Bot(token, { polling: true });
+var Bot = require('node-telegram-bot-api');
+
+
+var bot;
+
+if(process.env.NODE_ENV === 'production') {
+  bot = new Bot(token);
+  bot.setWebHook(process.env.HEROKU_URL + bot.token);
+}
+else {
+  bot = new Bot(token, { polling: true });
+}
+
+
 
 console.log('bot server started...');
 
@@ -37,7 +49,8 @@ bot.onText(/mucca/,function (msg) {
   const opts = {
     parse_mode: "HTML",
   };
-  bot.sendMessage(msg.chat.id, "<code>"+ cows()[ii] + "</code>", opts);
+  var mu=cows()[ii];
+  bot.sendMessage(msg.chat.id, "<code>"+ mu + "</code>", opts);
   console.log(cows()[ii]);
 });
 
